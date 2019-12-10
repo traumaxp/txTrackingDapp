@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
+import web3 from 'web3'
 
 // import example from './module-example'
 
@@ -23,7 +24,7 @@ export default function (/* { ssrContext } */) {
         let web3Copy = state.web3
         web3Copy.account = result.account
         web3Copy.networkId = result.networkId
-        web3Copy.balance = parseInt(result.balance, 10)
+        web3Copy.balance = web3.utils.fromWei(result.balance, 'ether')
         web3Copy.isInjected = result.injectedWeb3
         web3Copy.web3Instance = result.web3
         state.web3 = web3Copy
