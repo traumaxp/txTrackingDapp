@@ -17,7 +17,8 @@
     "@quasar/extras": "^1.0.0",
     "feathers-vuex": "2.0.0-pre.78",
     "quasar": "^1.0.0",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "web3": "^1.2.4"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
