@@ -83,8 +83,12 @@ export default {
             transaction.save()
               .then(transaction => {
                 console.log(transaction)
+                console.log(transaction._id)
               })
           })
+        })
+        .on('confirmation', function (confirmationNumber, receipt) {
+          console.log(confirmationNumber)
         })
     }
   }
