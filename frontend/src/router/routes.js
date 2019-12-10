@@ -1,4 +1,3 @@
-import store from '../store/index'
 const routes = [
   {
     path: '/',
@@ -7,36 +6,7 @@ const routes = [
       {
         path: '',
         name: 'home',
-        component: () => import('components/Home.vue'),
-        beforeEnter (to, from, next) {
-          store.dispatch('auth/authenticate').then(() => {
-            next({ name: 'chat' })
-          }).catch(() => {
-            next()
-          })
-        }
-      },
-      {
-        path: '/signUp',
-        name: 'signUp',
-        component: () => import('components/SignUp.vue')
-      },
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import('components/Login.vue')
-      },
-      {
-        path: '/chat',
-        name: 'chat',
-        component: () => import('components/Chat/Chat.vue'),
-        beforeEnter (to, from, next) {
-          store.dispatch('auth/authenticate').then(() => {
-            next()
-          }).catch(() => {
-            next({ name: 'home' })
-          })
-        }
+        component: () => import('components/Home.vue')
       }
     ]
   }
