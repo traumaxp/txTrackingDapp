@@ -13,22 +13,15 @@
     <p>Balance: {{ balance }} Wei </p>
       </q-card-section>
     </q-card>
-    <q-card class="my-card">
+    <q-card style="min-width:400px" class="my-card">
       <q-card-section>
         <div class="text-h6">Create a TX</div>
       </q-card-section>
       <q-card-section>
-        <div class="row">
-          <div class="col">Amount to send :</div>
-          <div class="col">
-            <q-input outlined />
-          </div>
-        </div>
-        <p>To:</p>
-        <q-input outlined></q-input>
-        <div>{{account}}</div>
+       Your address:<q-input outlined v-model="account"></q-input>
         <div>
-          amount <input v-model="amount"/>
+          Send Ether to <q-input outlined v-model="recipientAddress"></q-input> e g 0x1889EF49cDBaad420EB4D6f04066CA4093088Bbd
+          amount to send <q-input outlined v-model="amount">e.g 10017897970</q-input>10017897970
           <q-btn @click="sendEther" label="Send Ether" />
         </div>
       </q-card-section>
@@ -42,7 +35,8 @@ import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
-    amount: ''
+    amount: '',
+    recipientAddress: ''
   }),
   computed: mapState({
     isInjected: state => state.web3.isInjected,
