@@ -25,6 +25,7 @@
           <q-input outlined v-model="recipientAddress"></q-input>e g 0x1889EF49cDBaad420EB4D6f04066CA4093088Bbd
           amount to send
           <q-input outlined v-model="amount">e.g 10017897970</q-input>10017897970
+          <q-btn @click="saveTx" label="Send Ether" />
           <q-btn @click="sendAndSaveTx" label="Send Ether" />
         </div>
       </q-card-section>
@@ -33,12 +34,13 @@
 </template>
 <script>
 import Web3 from 'web3'
-import sendEther from '../util/sendEther'
+// import sendEther from '../util/sendEther'
 import { NETWORKS } from '../util/constants/networks'
 import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
+    transaction: '',
     amount: '',
     recipientAddress: ''
   }),
@@ -52,8 +54,13 @@ export default {
     // }
   }),
   methods: {
-    sendEther () {
-      return sendEther(this.account, this.amount)
+    saveTx () {
+      const { Transaction } = this.$FeathersVuex.api
+      const transaction = new Transaction(this.transaction)
+      transaction.save()
+        .then(transaction => {
+          console.log(transaction)
+        })
     },
     sendAndSaveTx () {
       var web3 = new Web3(window.web3.currentProvider)
