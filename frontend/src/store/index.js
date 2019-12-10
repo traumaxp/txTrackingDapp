@@ -12,7 +12,7 @@ Vue.use(Vuex)
  * If not building with SSR mode, you can
  * directly export the Store instantiation
  */
-
+import transactions from './services/transactions'
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     strict: true,
@@ -40,7 +40,12 @@ export default function (/* { ssrContext } */) {
           console.log('error in action registerWeb3', e)
         })
       }
-    }
+    },
+    plugins: [
+      // if you're using require.context, spread the plugins into the array.
+      // users, // if you're manually importing, just add the plugins into the array, like this
+      transactions
+    ]
     // enable strict mode (adds overhead!)
     // for dev mode only
   })
