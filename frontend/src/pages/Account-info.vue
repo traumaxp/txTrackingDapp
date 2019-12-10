@@ -1,11 +1,9 @@
 <template>
 <div>
  <hellometamask/>
- <createTransaction/>
 </div>
 </template>
 <script>
-import createTransaction from '../components/create-transaction'
 import hellometamask from '../components/hello-metamask'
 export default {
   name: 'account-info',
@@ -14,8 +12,7 @@ export default {
     this.$store.dispatch('registerWeb3')
   },
   components: {
-    hellometamask,
-    createTransaction
+    hellometamask
   }
 }
 </script>

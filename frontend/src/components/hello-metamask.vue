@@ -13,13 +13,37 @@
     <p>Balance: {{ balance }} Wei </p>
       </q-card-section>
     </q-card>
+    <q-card class="my-card">
+      <q-card-section>
+        <div class="text-h6">Create a TX</div>
+      </q-card-section>
+      <q-card-section>
+        <div class="row">
+          <div class="col">Amount to send :</div>
+          <div class="col">
+            <q-input outlined />
+          </div>
+        </div>
+        <p>To:</p>
+        <q-input outlined></q-input>
+        <div>{{account}}</div>
+        <div>
+          amount <input v-model="amount"/>
+          <q-btn @click="sendEther" label="Send Ether" />
+        </div>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 <script>
+import sendEther from '../util/sendEther'
 import { NETWORKS } from '../util/constants/networks'
 import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
+  data: () => ({
+    amount: ''
+  }),
   computed: mapState({
     isInjected: state => state.web3.isInjected,
     network: state => NETWORKS[state.web3.networkId],
@@ -28,7 +52,12 @@ export default {
     // ethBalance: state => {
     //   if (state.web3.web3Instance !== null) return state.web3.web3Instance().fromWei(state.web3.balance, 'ether')
     // }
-  })
+  }),
+  methods: {
+    sendEther () {
+      return sendEther(this.account, this.amount)
+    }
+  }
 }
 </script>
 
