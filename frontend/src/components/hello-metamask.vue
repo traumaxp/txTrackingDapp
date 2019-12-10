@@ -1,16 +1,16 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md flex flex-center">
-    <q-card
-      class="my-card"
-    >
+    <q-card class="my-card">
       <q-card-section>
-            <p v-if="isInjected" id="has-metamask"><i aria-hidden="true" class="fa fa-check"></i> Metamask installed</p>
+        <p v-if="isInjected" id="has-metamask">
+          <i aria-hidden="true" class="fa fa-check"></i> Metamask installed
+        </p>
         <div class="text-h6">Network: {{ network }}</div>
       </q-card-section>
 
       <q-card-section>
-    <p>Account: {{ account }}</p>
-    <p>Balance: {{ balance }} Wei </p>
+        <p>Account: {{ account }}</p>
+        <p>Balance: {{ balance }} Wei</p>
       </q-card-section>
     </q-card>
     <q-card style="min-width:400px" class="my-card">
@@ -18,17 +18,21 @@
         <div class="text-h6">Create a TX</div>
       </q-card-section>
       <q-card-section>
-       Your address:<q-input outlined v-model="account"></q-input>
+        Your address:
+        <q-input outlined v-model="account"></q-input>
         <div>
-          Send Ether to <q-input outlined v-model="recipientAddress"></q-input> e g 0x1889EF49cDBaad420EB4D6f04066CA4093088Bbd
-          amount to send <q-input outlined v-model="amount">e.g 10017897970</q-input>10017897970
-          <q-btn @click="sendEther" label="Send Ether" />
+          Send Ether to
+          <q-input outlined v-model="recipientAddress"></q-input>e g 0x1889EF49cDBaad420EB4D6f04066CA4093088Bbd
+          amount to send
+          <q-input outlined v-model="amount">e.g 10017897970</q-input>10017897970
+          <q-btn @click="sendAndSaveTx" label="Send Ether" />
         </div>
       </q-card-section>
     </q-card>
   </div>
 </template>
 <script>
+import Web3 from 'web3'
 import sendEther from '../util/sendEther'
 import { NETWORKS } from '../util/constants/networks'
 import { mapState } from 'vuex'
@@ -50,6 +54,22 @@ export default {
   methods: {
     sendEther () {
       return sendEther(this.account, this.amount)
+    },
+    sendAndSaveTx () {
+      var web3 = new Web3(window.web3.currentProvider)
+      web3.eth
+        .sendTransaction({
+          from: this.account,
+          to: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
+          value: this.amount // 10017897970
+        })
+        .on('transactionHash', function (hash) {
+          console.log('Transaction hash : ' + hash) // return Hash of tx
+          console.log('Status: Pending') // if value.blockNumber is null => Pending
+          web3.eth.getTransaction(hash).then(function (transaction) {
+            console.log(transaction)
+          })
+        })
     }
   }
 }
@@ -57,11 +77,12 @@ export default {
 
 <style scoped>
 .metamask-info {
-  text-align:center;
+  text-align: center
 }
 #has-metamask {
-  color: green;
+  color: green
 }
 #no-metamask {
-  color:red;
-}</style>
+  color: red
+}
+</style>
