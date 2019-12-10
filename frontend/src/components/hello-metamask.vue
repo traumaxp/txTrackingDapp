@@ -64,6 +64,7 @@ export default {
     },
     sendAndSaveTx () {
       var web3 = new Web3(window.web3.currentProvider)
+      const { Transaction } = this.$FeathersVuex.api
       web3.eth
         .sendTransaction({
           from: this.account,
@@ -73,8 +74,15 @@ export default {
         .on('transactionHash', function (hash) {
           console.log('Transaction hash : ' + hash) // return Hash of tx
           console.log('Status: Pending') // if value.blockNumber is null => Pending
-          web3.eth.getTransaction(hash).then(function (transaction) {
-            console.log(transaction)
+          web3.eth.getTransaction(hash).then(function (value) {
+            const txtx = {
+              tx: value
+            }
+            const transaction = new Transaction(txtx)
+            transaction.save()
+              .then(transaction => {
+                console.log(transaction)
+              })
           })
         })
     }
