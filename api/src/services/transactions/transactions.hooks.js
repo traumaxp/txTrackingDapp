@@ -17,9 +17,8 @@ module.exports = {
     find: [],
     get: [],
     create: [ function (context) {
-      console.log(context.data)
+      console.log('Transaction hash  ' + context.data.hash)
       const web3 = new Web3(new Web3.providers.HttpProvider('ropsten.infura.io/v3/1d38f839d2094faeb26482baefb57106'))
-      console.log(web3)
     }
     ],
     update: [],
