@@ -17,8 +17,15 @@ module.exports = {
     find: [],
     get: [],
     create: [ function (context) {
-      console.log('Transaction hash  ' + context.data.hash)
-      const web3 = new Web3(new Web3.providers.HttpProvider('ropsten.infura.io/v3/1d38f839d2094faeb26482baefb57106'))
+      const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'))
+      console.log('Transaction Hash is   ' + context.data.hash)
+      web3.eth.getTransactionReceipt(context.data.hash)
+.then(console.log);
+      const hash = context.data.hash
+      web3.eth.subscribe('pendingTransactions', function (error, result) {})
+      .on('confirmation', function (confirmationNumber) {
+        console.log(confirmationNumber)
+      })
     }
     ],
     update: [],
