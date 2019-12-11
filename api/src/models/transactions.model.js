@@ -6,7 +6,9 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const transactions = new Schema({
-    tx: {}
+    from: {},
+    to: {},
+    amount: {}
   }, {
     timestamps: true
   });

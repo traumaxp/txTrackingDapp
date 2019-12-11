@@ -40,7 +40,11 @@ import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
-    transaction: '',
+    transaction: {
+      from: 'Alice',
+      to: 'Tom',
+      amount: '43'
+    },
     amount: '',
     recipientAddress: ''
   }),
