@@ -74,16 +74,16 @@ export default {
         .on('transactionHash', function (hash) {
           // console.log('Transaction hash : ' + hash) // return Hash of tx
           console.log('Status: Pending') // if value.blockNumber is null => Pending
+          console.log(hash)
           web3.eth.getTransaction(hash).then(function (value) {
-            console.log(hash)
             const transactionToSave = {
+              hash: hash,
               tx: value
             }
             const transaction = new Transaction(transactionToSave)
             transaction.save()
               .then(transaction => {
                 console.log(transaction)
-                console.log(transaction._id)
               })
           })
         })
