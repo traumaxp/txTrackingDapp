@@ -64,10 +64,10 @@ export default {
           value: this.amount // 10017897970
         })
         .on('transactionHash', function (hash) {
-          const newHash = {
+          const txHash = {
             hash: hash
           }
-          const transaction = new Transaction(newHash)
+          const transaction = new Transaction(txHash)
           transaction.save()
             .then(transaction => {
               console.log(transaction)
