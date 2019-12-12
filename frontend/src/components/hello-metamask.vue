@@ -35,7 +35,7 @@
 import Web3 from 'web3'
 // import sendEther from '../util/sendEther'
 import { NETWORKS } from '../util/constants/networks'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
@@ -52,6 +52,7 @@ export default {
     }
   }),
   methods: {
+    ...mapActions('transactions', ['patch']),
     sendAndSaveTx () {
       var txId
       var web3 = new Web3(window.web3.currentProvider)
@@ -63,22 +64,27 @@ export default {
           value: this.amount // 10017897970
         })
         .on('transactionHash', function (hash) {
-          console.log(hash)
           const newHash = {
             hash: hash
           }
           const transaction = new Transaction(newHash)
           transaction.save()
             .then(transaction => {
-              console.log(transaction)
+              console.log(transaction._id)
               txId = transaction._id
             })
         })
         .on('receipt', function (receipt) {
-          console.log(receipt)
-          console.log(txId)
         })
         .on('confirmation', function (confirmationNumber, receipt) {
+          console.log(confirmationNumber)
+          if (confirmationNumber === 0) {
+            const transaction = new Transaction({ id: txId, hash: 'Do something!' })
+            transaction.save()
+              .then(transaction => {
+                console.log(transaction)
+              })
+          }
         })
     }
   }
