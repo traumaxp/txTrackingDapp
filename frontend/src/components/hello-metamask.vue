@@ -46,13 +46,14 @@ export default {
     isInjected: state => state.web3.isInjected,
     network: state => NETWORKS[state.web3.networkId],
     account: state => state.web3.account,
-    balance: state => state.web3.balance
-    // ethBalance: state => {
-    //   if (state.web3.web3Instance !== null) return state.web3.web3Instance().fromWei(state.web3.balance, 'ether')
-    // }
+    balance: state => state.web3.balance,
+    ethBalance: state => {
+      if (state.web3.web3Instance !== null) return state.web3.web3Instance().fromWei(state.web3.balance, 'ether')
+    }
   }),
   methods: {
     sendAndSaveTx () {
+      var txId
       var web3 = new Web3(window.web3.currentProvider)
       const { Transaction } = this.$FeathersVuex.api
       web3.eth
@@ -62,23 +63,22 @@ export default {
           value: this.amount // 10017897970
         })
         .on('transactionHash', function (hash) {
-          // console.log('Transaction hash : ' + hash) // return Hash of tx
-          console.log('Status: Pending') // if value.blockNumber is null => Pending
           console.log(hash)
-          web3.eth.getTransaction(hash).then(function (value) {
-            const newTx = {
-              hash: hash,
-              tx: value
-            }
-            const transaction = new Transaction(newTx)
-            transaction.save()
-              .then(transaction => {
-                console.log(transaction)
-              })
-          })
+          const newHash = {
+            hash: hash
+          }
+          const transaction = new Transaction(newHash)
+          transaction.save()
+            .then(transaction => {
+              console.log(transaction)
+              txId = transaction._id
+            })
+        })
+        .on('receipt', function (receipt) {
+          console.log(receipt)
+          console.log(txId)
         })
         .on('confirmation', function (confirmationNumber, receipt) {
-          console.log(confirmationNumber)
         })
     }
   }

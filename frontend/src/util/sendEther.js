@@ -1,19 +1,17 @@
 import Web3 from 'web3'
 
-let sendEther = function (account, amount) {
+let sendEther = function () {
   var web3 = new Web3(window.web3.currentProvider)
-  return web3.eth.sendTransaction({
-    from: account,
+  web3.eth.sendTransaction({
+    from: '0xB74fc3B69f626226f7F1c53D9D6D340AC291d481',
     to: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
-    value: amount // 10017897970
+    value: 10017897970 // 10017897970
   })
     .on('transactionHash', function (hash) {
       console.log('Transaction hash : ' + hash) // return Hash of tx
       console.log('Status: Pending') // if value.blockNumber is null => Pending
       web3.eth.getTransaction(hash).then(function (transaction) {
-        console.log(transaction)
-      }
-      )
+      })
     })
     .on('receipt', function (receipt) {
       console.log('Status: Mined ') // if value.blockNumber is non null => Mined
