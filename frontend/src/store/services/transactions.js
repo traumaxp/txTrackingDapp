@@ -9,9 +9,8 @@ class Transaction extends BaseModel {
   static modelName = 'Transaction'
   static instanceDefaults () {
     return {
-      from: '',
-      to: '',
-      amount: ''
+      hash: '',
+      tx: ''
     }
   }
 }

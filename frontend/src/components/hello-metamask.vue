@@ -25,7 +25,6 @@
           <q-input outlined v-model="recipientAddress"></q-input>e g 0x1889EF49cDBaad420EB4D6f04066CA4093088Bbd
           amount to send
           <q-input outlined v-model="amount">e.g 10017897970</q-input>10017897970
-          <q-btn @click="saveTx" label="Send Ether" />
           <q-btn @click="sendAndSaveTx" label="Send Ether" />
         </div>
       </q-card-section>
@@ -40,11 +39,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
-    transaction: {
-      from: 'Alice',
-      to: 'Tom',
-      amount: '43'
-    },
     amount: '',
     recipientAddress: ''
   }),
@@ -58,14 +52,6 @@ export default {
     // }
   }),
   methods: {
-    saveTx () {
-      const { Transaction } = this.$FeathersVuex.api
-      const transaction = new Transaction(this.transaction)
-      transaction.save()
-        .then(transaction => {
-          console.log(transaction)
-        })
-    },
     sendAndSaveTx () {
       var web3 = new Web3(window.web3.currentProvider)
       const { Transaction } = this.$FeathersVuex.api
@@ -80,11 +66,11 @@ export default {
           console.log('Status: Pending') // if value.blockNumber is null => Pending
           console.log(hash)
           web3.eth.getTransaction(hash).then(function (value) {
-            const transactionToSave = {
+            const newTx = {
               hash: hash,
               tx: value
             }
-            const transaction = new Transaction(transactionToSave)
+            const transaction = new Transaction(newTx)
             transaction.save()
               .then(transaction => {
                 console.log(transaction)
