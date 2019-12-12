@@ -74,8 +74,6 @@ export default {
               txId = transaction._id
             })
         })
-        .on('receipt', function (receipt) {
-        })
         .on('confirmation', function (confirmationNumber, receipt) {
           console.log(confirmationNumber)
           console.log(receipt)
