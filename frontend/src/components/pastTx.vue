@@ -1,14 +1,21 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md flex flex-center">
-    <q-card style="min-width:400px" class="my-card">
+    <q-card class="my-card">
       <q-card-section>
         <div class="text-h6">All tx </div>
         <div>
     <ul>
       <!-- Step 4 -->
-      <li v-for="transaction in transactions" :key="transaction._id">
+      <div v-for="transaction in transactions" :key="transaction._id">
+        <div class="row">
+            <div class="col"> Transaction Hash
         {{transaction.transactionHash}}
-      </li>
+            </div>
+            <div class="col"> Transaction Object
+        {{transaction.transactionHash}}
+            </div>
+        </div>
+      </div>
     </ul>
   </div>
       </q-card-section>
@@ -33,13 +40,4 @@ export default {
 </script>
 
 <style scoped>
-.metamask-info {
-  text-align: center
-}
-#has-metamask {
-  color: green
-}
-#no-metamask {
-  color: red
-}
 </style>

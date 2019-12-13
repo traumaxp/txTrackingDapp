@@ -1,16 +1,8 @@
 <template>
 <q-page class="flex flex-center">
-<div class="row">
-  <div class="col">
  <hellometamask/>
-  </div>
-  <div class="col">
  <sendTx/>
-  </div>
-  <pastTx/> <!-- HERE the load tx component-->
-</div>
-<div>
-</div>
+    <pastTx/>
 </q-page>
 </template>
 <script>
