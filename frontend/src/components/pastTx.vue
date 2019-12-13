@@ -1,18 +1,41 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md flex flex-center">
-    <q-card class="my-card">
+    <q-card class="my-card" style="min-width: 1250px">
       <q-card-section>
-        <div class="text-h6">All tx </div>
         <div>
     <ul>
       <!-- Step 4 -->
       <div v-for="transaction in transactions" :key="transaction._id">
         <div class="row">
-            <div class="col"> Transaction Hash
+            <div class="col">
+               <div>Tx Hash</div>
         {{transaction.transactionHash}}
             </div>
-            <div class="col"> Transaction Object
-        {{transaction.transactionHash}}
+            <div class="col">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <div>Value</div>
+        {{transaction.transactionValue}}
+            </div>
+            <div class="col">
+                <div>Block Number</div>
+        {{transaction.transactionObject.blockNumber}}
+            </div>
+            <div class="col">
+                <div>Cumulative gas used</div>
+        {{transaction.transactionObject.cumulativeGasUsed}}
+            </div>
+            <div class="col">
+            <div>gas used</div>
+        {{transaction.transactionObject.gasUsed}}
+            </div>
+            <div class="col">
+                <div>Transaction Status</div>
+        {{transaction.transactionObject.status}}
             </div>
         </div>
       </div>

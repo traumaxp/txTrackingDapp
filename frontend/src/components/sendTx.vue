@@ -25,8 +25,8 @@ import Web3 from 'web3'
 export default {
   name: 'sendTx',
   data: () => ({
-    amount: '',
-    recipientAddress: ''
+    amount: 10017897970,
+    recipientAddress: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd'
   }),
   computed: mapState({
     isInjected: state => state.web3.isInjected,
@@ -38,19 +38,21 @@ export default {
     }
   }),
   methods: {
-    sendAndSaveTx (amount) {
+    sendAndSaveTx () {
       var txId
+      var amount = this.amount
       var web3 = new Web3(window.web3.currentProvider)
       const { Transaction } = this.$FeathersVuex.api
       web3.eth
         .sendTransaction({
           from: this.account,
-          to: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
+          to: this.recipientAddress,
           value: this.amount // 10017897970
         })
         .on('transactionHash', function (hash) {
           const txHash = {
-            transactionHash: hash
+            transactionHash: hash,
+            transactionValue: amount
           }
           const transaction = new Transaction(txHash)
           transaction.save()
@@ -61,7 +63,7 @@ export default {
         })
         .on('confirmation', function (confirmationNumber, receipt) {
           console.log(confirmationNumber)
-          console.log(receipt)
+          console.log(receipt.transactionHash)
           if (confirmationNumber === 0) {
             const transaction = new Transaction({ id: txId, transactionObject: receipt })
             transaction.save()

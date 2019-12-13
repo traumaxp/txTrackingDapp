@@ -10,6 +10,7 @@ class Transaction extends BaseModel {
   static instanceDefaults () {
     return {
       transactionHash: '',
+      transactionValue: '',
       transactionObject: ''
     }
   }
