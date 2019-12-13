@@ -50,7 +50,7 @@ export default {
         })
         .on('transactionHash', function (hash) {
           const txHash = {
-            hash: hash
+            transactionHash: hash
           }
           const transaction = new Transaction(txHash)
           transaction.save()
@@ -63,7 +63,7 @@ export default {
           console.log(confirmationNumber)
           console.log(receipt)
           if (confirmationNumber === 0) {
-            const transaction = new Transaction({ id: txId, tx: receipt })
+            const transaction = new Transaction({ id: txId, transactionObject: receipt })
             transaction.save()
               .then(transaction => {
                 console.log(transaction)
