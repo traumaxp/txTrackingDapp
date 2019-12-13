@@ -7,7 +7,7 @@
     <ul>
       <!-- Step 4 -->
       <li v-for="transaction in transactions" :key="transaction._id">
-        {{transaction.transactionObject}}
+        {{transaction.transactionHash}}
       </li>
     </ul>
   </div>
