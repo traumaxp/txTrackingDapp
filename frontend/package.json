@@ -15,6 +15,7 @@
     "@feathersjs/feathers": "^4.3.3",
     "@feathersjs/socketio-client": "^4.3.3",
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.19.2",
     "feathers-vuex": "2.0.0-pre.78",
     "quasar": "^1.0.0",
     "socket.io-client": "^2.3.0",
