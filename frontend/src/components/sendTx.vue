@@ -6,13 +6,15 @@
       </q-card-section>
       <q-card-section>
         Your address:
-        <q-input outlined v-model="account"></q-input>
         <div>
+          <q-form v-model="valid" @submit.prevent="sendtx" class="q-gutter-md">
+            <q-input outlined v-model="account"></q-input>
           Send Ether to
-          <q-input outlined v-model="recipientAddress"></q-input>
+          <q-input outlined v-model="tx.recipientAddress"></q-input>
           amount to send
-          <q-input outlined v-model="amount"></q-input>
-          <q-btn @click="sendtx" label="Send Ether" />
+          <q-input outlined v-model="tx.amount"></q-input>
+          <q-btn label="Submit" type="submit" :disabled="!valid" color="primary" />
+          </q-form>
         </div>
       </q-card-section>
     </q-card>
@@ -25,10 +27,10 @@ import { mapState } from 'vuex'
 export default {
   name: 'sendTx',
   data: () => ({
+    valid: false,
     tx: {
-      from: this.account,
-      recipientAddress: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
-      amount: 10017897970
+      recipientAddress: '',
+      amount: ''
     }
   }),
   computed: mapState({
@@ -44,7 +46,11 @@ export default {
     sendtx () {
       const { Transaction } = this.$FeathersVuex.api
       console.log(this.account)
-      const transaction = new Transaction(this.tx)
+      const transaction = new Transaction({
+        from: this.account,
+        recipientAddress: this.tx.recipientAddress,
+        amount: this.tx.amount
+      })
       console.log(transaction)
     }
     // sendAndSaveTx () {
