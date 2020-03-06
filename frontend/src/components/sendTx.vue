@@ -12,7 +12,7 @@
           <q-input outlined v-model="recipientAddress"></q-input>
           amount to send
           <q-input outlined v-model="amount"></q-input>
-          <q-btn @click="sendAndSaveTx" label="Send Ether" />
+          <q-btn @click="sendtx" label="Send Ether" />
         </div>
       </q-card-section>
     </q-card>
@@ -21,12 +21,15 @@
 <script>
 import { NETWORKS } from '../util/constants/networks'
 import { mapState } from 'vuex'
-import Web3 from 'web3'
+// import Web3 from 'web3'
 export default {
   name: 'sendTx',
   data: () => ({
-    amount: 10017897970,
-    recipientAddress: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd'
+    tx: {
+      from: this.account,
+      recipientAddress: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
+      amount: 10017897970
+    }
   }),
   computed: mapState({
     isInjected: state => state.web3.isInjected,
@@ -38,41 +41,47 @@ export default {
     }
   }),
   methods: {
-    sendAndSaveTx () {
-      var txId
-      var amount = this.amount
-      var web3 = new Web3(window.web3.currentProvider)
+    sendtx () {
       const { Transaction } = this.$FeathersVuex.api
-      web3.eth
-        .sendTransaction({
-          from: this.account,
-          to: this.recipientAddress,
-          value: this.amount // 10017897970
-        })
-        .on('transactionHash', function (hash) {
-          const txHash = {
-            transactionHash: hash,
-            transactionValue: amount
-          }
-          const transaction = new Transaction(txHash)
-          transaction.save()
-            .then(transaction => {
-              console.log(transaction)
-              txId = transaction._id
-            })
-        })
-        .on('confirmation', function (confirmationNumber, receipt) {
-          console.log(confirmationNumber)
-          console.log(receipt.transactionHash)
-          if (confirmationNumber === 0) {
-            const transaction = new Transaction({ id: txId, transactionObject: receipt })
-            transaction.save()
-              .then(transaction => {
-                console.log(transaction)
-              })
-          }
-        })
+      console.log(this.account)
+      const transaction = new Transaction(this.tx)
+      console.log(transaction)
     }
+    // sendAndSaveTx () {
+    //   var txId
+    //   var amount = this.amount
+    //   var web3 = new Web3(window.web3.currentProvider)
+    //   const { Transaction } = this.$FeathersVuex.api
+    //   web3.eth
+    //     .sendTransaction({
+    //       from: this.account,
+    //       to: this.recipientAddress,
+    //       value: this.amount // 10017897970
+    //     })
+    //     .on('transactionHash', function (hash) {
+    //       const txHash = {
+    //         transactionHash: hash,
+    //         transactionValue: amount
+    //       }
+    //       const transaction = new Transaction(txHash)
+    //       transaction.save()
+    //         .then(transaction => {
+    //           console.log(transaction)
+    //           txId = transaction._id
+    //         })
+    //     })
+    //     .on('confirmation', function (confirmationNumber, receipt) {
+    //       console.log(confirmationNumber)
+    //       console.log(receipt.transactionHash)
+    //       if (confirmationNumber === 0) {
+    //         const transaction = new Transaction({ id: txId, transactionObject: receipt })
+    //         transaction.save()
+    //           .then(transaction => {
+    //             console.log(transaction)
+    //           })
+    //       }
+    //     })
+    // }
   }
 }
 </script>

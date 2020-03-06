@@ -9,6 +9,9 @@ class Transaction extends BaseModel {
   static modelName = 'Transaction'
   static instanceDefaults () {
     return {
+      from: '',
+      recipientAddress: '',
+      amount: '',
       transactionHash: '',
       transactionValue: '',
       transactionObject: ''
