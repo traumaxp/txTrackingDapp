@@ -50,6 +50,7 @@ export default {
         recipientAddress: this.tx.recipientAddress,
         amount: this.tx.amount
       })
+      transaction.save().then(console.log)
     }
     // sendAndSaveTx () {
     //   var txId
