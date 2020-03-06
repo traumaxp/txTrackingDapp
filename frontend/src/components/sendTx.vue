@@ -45,13 +45,11 @@ export default {
   methods: {
     sendtx () {
       const { Transaction } = this.$FeathersVuex.api
-      console.log(this.account)
       const transaction = new Transaction({
         from: this.account,
         recipientAddress: this.tx.recipientAddress,
         amount: this.tx.amount
       })
-      console.log(transaction)
     }
     // sendAndSaveTx () {
     //   var txId
