@@ -6,13 +6,12 @@
       </q-card-section>
       <q-separator/>
       <q-card-section>
-          <q-form v-model="valid" @submit.prevent="sendAndSaveTx" class="q-gutter-md">
+          <q-form v-model="valid" @submit.prevent="decodeTx" class="q-gutter-md">
         <q-input label="Tx hash" v-model="txHash"/>
         <q-btn label="submit" color="primary" type="submit"/>
           </q-form>
       </q-card-section>
       <q-card-section>
-        {{data}}
       </q-card-section>
     </q-card>
   </div>
@@ -23,7 +22,12 @@ export default {
   data: () => ({
     valid: false,
     txHash: ''
-  })
+  }),
+  methods: {
+    decodeTx () {
+      console.log(this.txHash)
+    }
+  }
 }
 </script>
 
