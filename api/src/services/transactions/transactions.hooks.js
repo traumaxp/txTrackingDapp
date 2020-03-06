@@ -1,6 +1,4 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-const Web3 = require('web3');
-const createTx = require('../../hooks/create-tx')
 
 module.exports = {
   before: {
@@ -17,7 +15,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [createTx()],
+    create: [],
     update: [],
     patch: [],
     remove: []
