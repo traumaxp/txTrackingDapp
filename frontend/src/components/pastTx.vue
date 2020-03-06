@@ -5,10 +5,13 @@
         <div>
     <ul>
       <!-- Step 4 -->
+      <q-card-section>
+      <div class="text-body1">Tx Hash</div>
+      <q-separator/>
+      </q-card-section>
       <div v-for="transaction in transactions" :key="transaction._id">
         <div class="row">
             <tr class="col">
-               <div>Tx Hash</div>
         <td class="text-left">{{transaction.transactionHash}}</td>
             </tr>
             <div class="col">
@@ -65,5 +68,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="sass">
+.q-card
+  height: 500px
 </style>

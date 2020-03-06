@@ -35,6 +35,9 @@ export default {
 </script>
 
 <style scoped>
+.q-card{
+  height: 350px
+}
 .metamask-info {
   text-align: center
 }
