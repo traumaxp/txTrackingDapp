@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .q-card{
-  height: 350px
+  height: 400px
 }
 .metamask-info {
   text-align: center
