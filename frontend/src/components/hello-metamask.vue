@@ -27,6 +27,7 @@
         <q-separator/>
       <q-card-section>
         <p class="text-body1">Balance: {{ balance }} Ether</p>
+        <p class="text-body1">Balance: {{ daiBalance }} Dai</p>
       </q-card-section>
     </q-card>
   </div>
@@ -52,7 +53,8 @@ export default {
     ethBalance: state => {
       if (state.web3.web3Instance !== null) return state.web3.web3Instance().fromWei(state.web3.balance, 'ether')
     },
-    lastestBlock: state => state.web3.latestBlock
+    lastestBlock: state => state.web3.latestBlock,
+    daiBalance: state => state.web3.daiBalance
   })
 }
 </script>

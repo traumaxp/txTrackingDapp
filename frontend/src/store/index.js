@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
+import getTokensBalances from '../util/getTokensBalances'
 import web3 from 'web3'
 import { FeathersVuex } from '../feathers-client'
 
@@ -36,7 +37,12 @@ export default new Vuex.Store({
       web3Copy.balance = web3.utils.fromWei(result.balance, 'ether')
       web3Copy.isInjected = result.injectedWeb3
       web3Copy.web3Instance = result.web3
-      state.web3 = web3Copy
+    },
+    getBalances (state, payload) {
+      console.log('getBalances Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.daiBalance = result.daiBalance
     }
   },
   actions: {
@@ -47,6 +53,15 @@ export default new Vuex.Store({
         commit('registerWeb3Instance', result)
       }).catch(e => {
         console.log('error in action registerWeb3', e)
+      })
+    },
+    getBalances ({ commit }) {
+      console.log('getBalances Action being executed')
+      getTokensBalances.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getBalances', result)
+      }).catch(e => {
+        console.log('error in action getBalances', e)
       })
     }
   }

@@ -16,6 +16,7 @@ export default {
   beforeCreate () {
     console.log('registerWeb3 Action dispatched from account-info.vue')
     this.$store.dispatch('registerWeb3')
+    this.$store.dispatch('getBalances')
   },
   components: {
     hellometamask

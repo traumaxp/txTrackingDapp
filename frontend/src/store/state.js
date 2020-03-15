@@ -6,7 +6,8 @@ let state = {
     account: null,
     balance: null,
     error: null,
-    latestBlock: null
+    latestBlock: null,
+    daiBalance: null
   },
   contractInstance: null
 }
