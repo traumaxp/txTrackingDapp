@@ -12,27 +12,34 @@
           <q-separator vertical/>
           <div class="col text-center text-h6">
             ETHEREUM INFOS
+            <!-- Latest bloc -->
           </div>
         </div>
       </q-card-section>
       <q-separator/>
       <q-card-section>
-        <p>Account: {{ account }}</p>
+        <p class="text-body1">Account: {{ account }}</p>
       </q-card-section>
         <q-separator/>
       <q-card-section>
-        <p>Balance: {{ balance }} Ether</p>
+        <p class="text-body1">Balance: {{ balance }} Ether</p>
       </q-card-section>
     </q-card>
   </div>
 </template>
 <script>
+import Web3 from 'web3'
 import { NETWORKS } from '../util/constants/networks'
 import { mapState } from 'vuex'
 export default {
   name: 'hello-metamask',
   data: () => ({
   }),
+  created () {
+    var web3 = new Web3(window.web3.currentProvider)
+    web3.eth.getBlockNumber()
+      .then(console.log)
+  },
   computed: mapState({
     isInjected: state => state.web3.isInjected,
     network: state => NETWORKS[state.web3.networkId],
