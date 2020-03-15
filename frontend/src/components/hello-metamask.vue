@@ -75,14 +75,9 @@ export default {
         }
       ]
 
-      // Get ERC20 Token contract instance
       let contract = new web3.eth.Contract(minABI, tokenAddress)
-
-      // Call balanceOf function
       contract.methods.balanceOf(walletAddress).call().then((balance) => {
-        // Get decimals
         contract.methods.decimals().call().then((decimals) => {
-          // calculate a balance
           balance = balance / (10 ** decimals)
           console.log(balance.toString())
         })
