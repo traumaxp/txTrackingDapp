@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
+// DAI
 let tokenAddress = '0x6b175474e89094c44da98b954eedeac495271d0f'
-// let walletAddress = '0xB74fc3B69f626226f7F1c53D9D6D340AC291d481'
 
 let minABI = [
   {
