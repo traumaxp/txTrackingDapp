@@ -2,14 +2,18 @@
   <div class="q-pa-md row items-start q-gutter-md flex flex-center">
     <q-card class="my-card">
       <q-card-section>
-      <q-card-section>
-        <p v-if="isInjected" id="has-metamask">
+        <div class="row">
+          <div class="col text-center">
+            <p v-if="isInjected" id="has-metamask">
           <i aria-hidden="true" class="fa fa-check"></i> Metamask installed
         </p>
-      </q-card-section>
-        <q-card-section>
         <div class="text-h6">Network: {{ network }}</div>
-        </q-card-section>
+          </div>
+          <q-separator vertical/>
+          <div class="col text-center text-h6">
+            ETHEREUM INFOS
+          </div>
+        </div>
       </q-card-section>
       <q-separator/>
       <q-card-section>
