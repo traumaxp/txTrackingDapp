@@ -1,5 +1,5 @@
 <template>
-<q-page class="flex flex-center">
+<q-page>
  <hellometamask/>
  <!-- <sendTx/> -->
     <!-- <pastTx/> -->
@@ -24,5 +24,8 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="sass">
+.q-card
+  min-width: 90%
+
 </style>
