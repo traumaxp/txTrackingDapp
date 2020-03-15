@@ -31,6 +31,7 @@ export default new Vuex.Store({
       let result = payload
       let web3Copy = state.web3
       web3Copy.account = result.account
+      web3Copy.latestBlock = result.latestBlock
       web3Copy.networkId = result.networkId
       web3Copy.balance = web3.utils.fromWei(result.balance, 'ether')
       web3Copy.isInjected = result.injectedWeb3

@@ -29,6 +29,21 @@ let getWeb3 = new Promise(function (resolve, reject) {
   .then(result => {
     return new Promise(function (resolve, reject) {
       // Retrieve network ID
+      result.web3().eth.getBlockNumber((err, latestBlock) => {
+        if (err) {
+          // If we can't find a networkId keep result the same and reject the promise
+          reject(new Error('Unable to retrieve latestBlock ID'))
+        } else {
+          // Assign the networkId property to our result and resolve promise
+          result = Object.assign({}, result, { latestBlock })
+          resolve(result)
+        }
+      })
+    })
+  })
+  .then(result => {
+    return new Promise(function (resolve, reject) {
+      // Retrieve network ID
       result.web3().eth.getChainId((err, networkId) => {
         if (err) {
           // If we can't find a networkId keep result the same and reject the promise
