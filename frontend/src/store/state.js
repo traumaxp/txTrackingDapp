@@ -1,12 +1,12 @@
 let state = {
   web3: {
-    hello: 'hello',
     isInjected: false,
     web3Instance: null,
     networkId: null,
     account: null,
     balance: null,
-    error: null
+    error: null,
+    latestBlock: null
   },
   contractInstance: null
 }

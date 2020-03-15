@@ -3,8 +3,8 @@ import Web3 from 'web3'
 let sendEther = function () {
   var web3 = new Web3(window.web3.currentProvider)
   web3.eth.sendTransaction({
-    from: '0xB74fc3B69f626226f7F1c53D9D6D340AC291d481',
-    to: '0x1889ef49cdbaad420eb4d6f04066ca4093088bbd',
+    from: '',
+    to: '',
     value: 10017897970 // 10017897970
   })
     .on('transactionHash', function (hash) {

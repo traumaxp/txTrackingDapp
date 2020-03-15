@@ -11,8 +11,12 @@
           </div>
           <q-separator vertical/>
           <div class="col text-center text-h6">
+            <div>
             ETHEREUM INFOS
-            <!-- Latest bloc -->
+              </div>
+              <div class="text-body1">
+            LatestBlock: {{lastestBlock}}
+              </div>
           </div>
         </div>
       </q-card-section>
@@ -47,7 +51,8 @@ export default {
     balance: state => state.web3.balance,
     ethBalance: state => {
       if (state.web3.web3Instance !== null) return state.web3.web3Instance().fromWei(state.web3.balance, 'ether')
-    }
+    },
+    lastestBlock: state => state.web3.latestBlock
   })
 }
 </script>
