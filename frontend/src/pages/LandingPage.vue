@@ -1,15 +1,15 @@
 <template>
 <q-page class="flex flex-center">
  <hellometamask/>
- <sendTx/>
+ <!-- <sendTx/> -->
     <!-- <pastTx/> -->
-    <txDecode/>
+    <!-- <txDecode/> -->
 </q-page>
 </template>
 <script>
-import txDecode from '../components/txDecode.vue'
+// import txDecode from '../components/txDecode.vue'
 import hellometamask from '../components/hello-metamask'
-import sendTx from '../components/sendTx'
+// import sendTx from '../components/sendTx'
 // import pastTx from '../components/pastTx'
 export default {
   name: 'LandingPage',
@@ -18,9 +18,9 @@ export default {
     this.$store.dispatch('registerWeb3')
   },
   components: {
-    txDecode,
-    hellometamask,
-    sendTx
+    hellometamask
+    // txDecode,
+    // sendTx
   }
 }
 </script>
