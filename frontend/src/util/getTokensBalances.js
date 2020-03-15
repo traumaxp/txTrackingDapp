@@ -26,20 +26,21 @@ let getWeb3 = new Promise(function (resolve, reject) {
     reject(new Error('Unable to connect to Metamask'))
   }
 })
-  .then(result => {
-    return new Promise(function (resolve, reject) {
-      // Retrieve network ID
-      result.web3().eth.getBlockNumber((err, latestBlock) => {
-        if (err) {
-          // If we can't find a networkId keep result the same and reject the promise
-          reject(new Error('Unable to retrieve latestBlock ID'))
-        } else {
-          // Assign the networkId property to our result and resolve promise
-          result = Object.assign({}, result, { latestBlock })
-          resolve(result)
-        }
-      })
-    })
-  })
+// .then(result => {
+//   return new Promise(function (resolve, reject) {
+//     const daiContract = web3.eth.Contract(contract_abi, '0x6b175474e89094c44da98b954eedeac495271d0f');
+//     daiContract.methods.getName().call();
+//     result.web3().eth.getBlockNumber((err, latestBlock) => { // DAI
+//       if (err) {
+//         // If we can't find a networkId keep result the same and reject the promise
+//         reject(new Error('Unable to retrieve Dai Balance ID'))
+//       } else {
+//         // Assign the networkId property to our result and resolve promise
+//         result = Object.assign({}, result, { balanceDai })
+//         resolve(result)
+//       }
+//     })
+//   })
+// })
 
 export default getWeb3
