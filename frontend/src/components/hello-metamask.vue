@@ -23,8 +23,16 @@
       <q-separator />
       <q-card-section>
         <p class="text-body1">Balance: {{ balance }} Ether</p>
-        <p class="text-body1">Balance: {{ daiBalance }} Dai</p>
-        <p class="text-body1">Balance: {{ manaBalance }} Mana</p>
+        <p class="text-body1">Balance: {{ daiBalance }} DAI</p>
+        <p class="text-body1">Balance: {{ manaBalance }} MANA</p>
+        <p class="text-body1">Balance: {{ tetherBalance }} USDT</p>
+        <p class="text-body1">Balance: {{ usdcBalance }} USDC</p>
+        <p class="text-body1">Balance: {{ paxosBalance }} PAX</p>
+        <p class="text-body1">Balance: {{ makerBalance }} MKR</p>
+        <p class="text-body1">Balance: {{ batBalance }} BAT</p>
+        <p class="text-body1">Balance: {{ zrxBalance }} ZRX</p>
+        <p class="text-body1">Balance: {{ saiBalance }} SAI</p>
+        <p class="text-body1">Balance: {{ kyberNetworkBalance }} KNC</p>
       </q-card-section>
     </q-card>
   </div>
