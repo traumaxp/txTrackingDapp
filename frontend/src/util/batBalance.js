@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // bat
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0x0d8775f648430679a709e98d2b0cb6250d2887ef'
 
 let minABI = [
   {

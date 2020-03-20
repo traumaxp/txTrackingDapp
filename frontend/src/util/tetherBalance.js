@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // tether
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0xdac17f958d2ee523a2206206994597c13d831ec7'
 
 let minABI = [
   {

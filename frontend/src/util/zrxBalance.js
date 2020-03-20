@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // zrx
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0xe41d2489571d322189246dafa5ebde1f4699f498'
 
 let minABI = [
   {

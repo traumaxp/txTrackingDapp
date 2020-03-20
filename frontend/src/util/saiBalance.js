@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // sai
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'
 
 let minABI = [
   {

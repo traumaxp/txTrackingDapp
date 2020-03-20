@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // paxos
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0x8e870d67f660d95d5be530380d0ec0bd388289e1'
 
 let minABI = [
   {

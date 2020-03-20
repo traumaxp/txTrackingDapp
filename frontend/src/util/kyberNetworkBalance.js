@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 // knc
-let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
+let tokenAddress = '0xdd974d5c2e2928dea5f71b9825b8b646686bd200'
 
 let minABI = [
   {
