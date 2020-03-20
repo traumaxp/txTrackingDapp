@@ -8,7 +8,15 @@ let state = {
     error: null,
     latestBlock: null,
     daiBalance: null,
-    manaBalance: null
+    manaBalance: null,
+    tetherBalance: null,
+    usdcBalance: null,
+    paxosBalance: null,
+    makerBalance: null,
+    batBalance: null,
+    zrxBalance: null,
+    saiBalance: null,
+    kyberNetworkBalance: null
   },
   contractInstance: null
 }
