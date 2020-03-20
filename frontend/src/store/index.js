@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
-import getTokensBalances from '../util/getTokensBalances'
+import daiBalance from '../util/DaiBalance'
+import manaBalance from '../util/ManaBalance'
 import web3 from 'web3'
 import { FeathersVuex } from '../feathers-client'
 
@@ -38,11 +39,17 @@ export default new Vuex.Store({
       web3Copy.isInjected = result.injectedWeb3
       web3Copy.web3Instance = result.web3
     },
-    getBalances (state, payload) {
+    getDaiBalance (state, payload) {
       console.log('getBalances Mutation being executed', payload)
       let result = payload
       let web3Copy = state.web3
       web3Copy.daiBalance = result.daiBalance
+    },
+    getManaBalance (state, payload) {
+      console.log('getManaBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.manaBalance = result.manaBalance
     }
   },
   actions: {
@@ -55,13 +62,22 @@ export default new Vuex.Store({
         console.log('error in action registerWeb3', e)
       })
     },
-    getBalances ({ commit }) {
+    getDaiBalance ({ commit }) {
       console.log('getBalances Action being executed')
-      getTokensBalances.then(result => {
+      daiBalance.then(result => {
         console.log('committing result to getBalances mutation')
-        commit('getBalances', result)
+        commit('getDaiBalance', result)
       }).catch(e => {
         console.log('error in action getBalances', e)
+      })
+    },
+    getManaBalance ({ commit }) {
+      console.log('getManaBalance Action being executed')
+      manaBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getManaBalance', result)
+      }).catch(e => {
+        console.log('error in action getManaBalance', e)
       })
     }
   }

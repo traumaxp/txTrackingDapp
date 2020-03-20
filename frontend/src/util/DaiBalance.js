@@ -25,7 +25,7 @@ let minABI = [
 
 // // Call balanceOf function
 
-let getTokensBalance = new Promise(function (resolve, reject) {
+let daiBalance = new Promise(function (resolve, reject) {
   // Check for injected web3 (mist/metamask)
   var web3 = new Web3(window.web3.currentProvider)
   resolve(
@@ -46,4 +46,4 @@ let getTokensBalance = new Promise(function (resolve, reject) {
   )
 })
 
-export default getTokensBalance
+export default daiBalance

@@ -7,7 +7,8 @@ let state = {
     balance: null,
     error: null,
     latestBlock: null,
-    daiBalance: null
+    daiBalance: null,
+    manaBalance: null
   },
   contractInstance: null
 }
