@@ -50,6 +50,54 @@ export default new Vuex.Store({
       let result = payload
       let web3Copy = state.web3
       web3Copy.manaBalance = result.manaBalance
+    },
+    getThetherBalance (state, payload) {
+      console.log('getThetherBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.usdtBalance = result.usdtBalance
+    },
+    getUsdcBalance (state, payload) {
+      console.log('getusdcBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.usdcBalance = result.usdcBalance
+    },
+    getPaxosBalance (state, payload) {
+      console.log('getPaxosBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.paxBalance = result.paxBalance
+    },
+    getMakerBalance (state, payload) {
+      console.log('getMakerbalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.mkrBalance = result.mkrBalance
+    },
+    getBatBalance (state, payload) {
+      console.log('getBatBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.batBalance = result.batBalance
+    },
+    getZrxBalance (state, payload) {
+      console.log('getZrxBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.zrxBalance = result.zrxBalance
+    },
+    getSaiBalance (state, payload) {
+      console.log('getSaiBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.saiBalance = result.saiBalance
+    },
+    getKncBalance (state, payload) {
+      console.log('getKncBalance Mutation being executed', payload)
+      let result = payload
+      let web3Copy = state.web3
+      web3Copy.kncBalance = result.kncBalance
     }
   },
   actions: {
@@ -76,15 +124,55 @@ export default new Vuex.Store({
       }).catch(e => {
         console.log('error in action getManaBalance', e)
       })
+      tetherBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getThetherBalance', result)
+      }).catch(e => {
+        console.log('error in action getThetherBalance', e)
+      })
+      usdcBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getUsdcBalance', result)
+      }).catch(e => {
+        console.log('error in action getUsdcBalance', e)
+      })
+      paxosBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getPaxosBalance', result)
+      }).catch(e => {
+        console.log('error in action getPaxosBalance', e)
+      })
+      makerBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getMakerBalance', result)
+      }).catch(e => {
+        console.log('error in action getMakerBalance', e)
+      })
+      batBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getBatBalance', result)
+      }).catch(e => {
+        console.log('error in action getBatBalance', e)
+      })
+      zrxBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getZrxBalance', result)
+      }).catch(e => {
+        console.log('error in action getZrxBalance', e)
+      })
+      saiBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getSaiBalance', result)
+      }).catch(e => {
+        console.log('error in action getSaiBalance', e)
+      })
+      kyberNetworkBalance.then(result => {
+        console.log('committing result to getBalances mutation')
+        commit('getKncBalance', result)
+      }).catch(e => {
+        console.log('error in action getKncBalance', e)
+      })
     }
-    // getManaBalance ({ commit }) {
-    //   console.log('getManaBalance Action being executed')
-    //   manaBalance.then(result => {
-    //     console.log('committing result to getBalances mutation')
-    //     commit('getManaBalance', result)
-    //   }).catch(e => {
-    //     console.log('error in action getManaBalance', e)
-    //   })
   }
   // enable strict mode (adds overhead!)
   // for dev mode only
