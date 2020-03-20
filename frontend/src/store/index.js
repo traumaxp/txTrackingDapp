@@ -62,7 +62,7 @@ export default new Vuex.Store({
         console.log('error in action registerWeb3', e)
       })
     },
-    getDaiBalance ({ commit }) {
+    getTokensBalance ({ commit }) {
       console.log('getBalances Action being executed')
       daiBalance.then(result => {
         console.log('committing result to getBalances mutation')
@@ -70,9 +70,6 @@ export default new Vuex.Store({
       }).catch(e => {
         console.log('error in action getBalances', e)
       })
-    },
-    getManaBalance ({ commit }) {
-      console.log('getManaBalance Action being executed')
       manaBalance.then(result => {
         console.log('committing result to getBalances mutation')
         commit('getManaBalance', result)
@@ -80,6 +77,14 @@ export default new Vuex.Store({
         console.log('error in action getManaBalance', e)
       })
     }
+    // getManaBalance ({ commit }) {
+    //   console.log('getManaBalance Action being executed')
+    //   manaBalance.then(result => {
+    //     console.log('committing result to getBalances mutation')
+    //     commit('getManaBalance', result)
+    //   }).catch(e => {
+    //     console.log('error in action getManaBalance', e)
+    //   })
   }
   // enable strict mode (adds overhead!)
   // for dev mode only
