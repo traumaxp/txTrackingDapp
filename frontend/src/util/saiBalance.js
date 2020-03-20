@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 
-// knc
+// sai
 let tokenAddress = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
 
 let minABI = [
@@ -25,7 +25,7 @@ let minABI = [
 
 // // Call balanceOf function
 
-let kyberNetworkBalance = new Promise(function (resolve, reject) {
+let saiBalance = new Promise(function (resolve, reject) {
   // Check for injected web3 (mist/metamask)
   var web3 = new Web3(window.web3.currentProvider)
   resolve(
@@ -34,10 +34,10 @@ let kyberNetworkBalance = new Promise(function (resolve, reject) {
         return new Promise(function (resolve, reject) {
           let contract = new web3.eth.Contract(minABI, tokenAddress)
           // Start
-          contract.methods.balanceOf(result[0]).call().then(kyberNetworkBalance => {
+          contract.methods.balanceOf(result[0]).call().then(saiBalance => {
             contract.methods.decimals().call().then((decimals) => {
-              kyberNetworkBalance = kyberNetworkBalance / (10 ** decimals)
-              const result = Object.assign({}, kyberNetworkBalance, { kyberNetworkBalance })
+              saiBalance = saiBalance / (10 ** decimals)
+              const result = Object.assign({}, saiBalance, { saiBalance })
               resolve(result)
             })
           })
@@ -46,4 +46,4 @@ let kyberNetworkBalance = new Promise(function (resolve, reject) {
   )
 })
 
-export default kyberNetworkBalance
+export default saiBalance
