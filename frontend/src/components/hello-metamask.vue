@@ -47,7 +47,16 @@ export default {
     },
     lastestBlock: state => state.web3.latestBlock,
     daiBalance: state => state.web3.daiBalance,
-    manaBalance: state => state.web3.manaBalance
+    manaBalance: state => state.web3.manaBalance,
+    tetherBalance: state => state.web3.tetherBalance,
+    usdcBalance: state => state.web3.usdcBalance,
+    paxosBalance: state => state.web3.paxosBalance,
+    makerBalance: state => state.web3.makerBalance,
+    batBalance: state => state.web3.batBalance,
+    zrxBalance: state => state.web3.zrxBalance,
+    saiBalance: state => state.web3.saiBalance,
+    kyberNetworkBalance: state => state.web3.kyberNetworkBalance
+
   })
 }
 </script>
