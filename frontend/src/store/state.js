@@ -16,7 +16,7 @@ let state = {
     batBalance: null,
     zrxBalance: null,
     saiBalance: null,
-    kyberNetworkBalance: null
+    kncBalance: null
   },
   contractInstance: null
 }

@@ -25,7 +25,7 @@ let minABI = [
 
 // // Call balanceOf function
 
-let batbalance = new Promise(function (resolve, reject) {
+let batBalance = new Promise(function (resolve, reject) {
   // Check for injected web3 (mist/metamask)
   var web3 = new Web3(window.web3.currentProvider)
   resolve(
@@ -34,10 +34,10 @@ let batbalance = new Promise(function (resolve, reject) {
         return new Promise(function (resolve, reject) {
           let contract = new web3.eth.Contract(minABI, tokenAddress)
           // Start
-          contract.methods.balanceOf(result[0]).call().then(batbalance => {
+          contract.methods.balanceOf(result[0]).call().then(batBalance => {
             contract.methods.decimals().call().then((decimals) => {
-              batbalance = batbalance / (10 ** decimals)
-              const result = Object.assign({}, batbalance, { batbalance })
+              batBalance = batBalance / (10 ** decimals)
+              const result = Object.assign({}, batBalance, { batBalance })
               resolve(result)
             })
           })
@@ -46,4 +46,4 @@ let batbalance = new Promise(function (resolve, reject) {
   )
 })
 
-export default batbalance
+export default batBalance

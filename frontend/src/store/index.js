@@ -11,7 +11,7 @@ import makerBalance from '../util/makerBalance'
 import batBalance from '../util/batBalance'
 import zrxBalance from '../util/zrxBalance'
 import saiBalance from '../util/saiBalance'
-import kyberNetworkBalance from '../util/kyberNetworkBalance'
+import kncBalance from '../util/kyberNetworkBalance'
 
 import web3 from 'web3'
 import { FeathersVuex } from '../feathers-client'
@@ -64,7 +64,7 @@ export default new Vuex.Store({
       console.log('getThetherBalance Mutation being executed', payload)
       let result = payload
       let web3Copy = state.web3
-      web3Copy.usdtBalance = result.usdtBalance
+      web3Copy.tetherBalance = result.tetherBalance
     },
     getUsdcBalance (state, payload) {
       console.log('getusdcBalance Mutation being executed', payload)
@@ -76,13 +76,13 @@ export default new Vuex.Store({
       console.log('getPaxosBalance Mutation being executed', payload)
       let result = payload
       let web3Copy = state.web3
-      web3Copy.paxBalance = result.paxBalance
+      web3Copy.paxosBalance = result.paxosBalance
     },
     getMakerBalance (state, payload) {
       console.log('getMakerbalance Mutation being executed', payload)
       let result = payload
       let web3Copy = state.web3
-      web3Copy.mkrBalance = result.mkrBalance
+      web3Copy.makerBalance = result.makerBalance
     },
     getBatBalance (state, payload) {
       console.log('getBatBalance Mutation being executed', payload)
@@ -175,7 +175,7 @@ export default new Vuex.Store({
       }).catch(e => {
         console.log('error in action getSaiBalance', e)
       })
-      kyberNetworkBalance.then(result => {
+      kncBalance.then(result => {
         console.log('committing result to getBalances mutation')
         commit('getKncBalance', result)
       }).catch(e => {

@@ -25,7 +25,7 @@ let minABI = [
 
 // // Call balanceOf function
 
-let kyberNetworkBalance = new Promise(function (resolve, reject) {
+let kncBalance = new Promise(function (resolve, reject) {
   // Check for injected web3 (mist/metamask)
   var web3 = new Web3(window.web3.currentProvider)
   resolve(
@@ -34,10 +34,10 @@ let kyberNetworkBalance = new Promise(function (resolve, reject) {
         return new Promise(function (resolve, reject) {
           let contract = new web3.eth.Contract(minABI, tokenAddress)
           // Start
-          contract.methods.balanceOf(result[0]).call().then(kyberNetworkBalance => {
+          contract.methods.balanceOf(result[0]).call().then(kncBalance => {
             contract.methods.decimals().call().then((decimals) => {
-              kyberNetworkBalance = kyberNetworkBalance / (10 ** decimals)
-              const result = Object.assign({}, kyberNetworkBalance, { kyberNetworkBalance })
+              kncBalance = kncBalance / (10 ** decimals)
+              const result = Object.assign({}, kncBalance, { kncBalance })
               resolve(result)
             })
           })
@@ -46,4 +46,4 @@ let kyberNetworkBalance = new Promise(function (resolve, reject) {
   )
 })
 
-export default kyberNetworkBalance
+export default kncBalance

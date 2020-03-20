@@ -32,7 +32,7 @@
         <p class="text-body1">Balance: {{ batBalance }} BAT</p>
         <p class="text-body1">Balance: {{ zrxBalance }} ZRX</p>
         <p class="text-body1">Balance: {{ saiBalance }} SAI</p>
-        <p class="text-body1">Balance: {{ kyberNetworkBalance }} KNC</p>
+        <p class="text-body1">Balance: {{ kncBalance }} KNC</p>
       </q-card-section>
     </q-card>
   </div>
@@ -63,7 +63,7 @@ export default {
     batBalance: state => state.web3.batBalance,
     zrxBalance: state => state.web3.zrxBalance,
     saiBalance: state => state.web3.saiBalance,
-    kyberNetworkBalance: state => state.web3.kyberNetworkBalance
+    kncBalance: state => state.web3.kncBalance
 
   })
 }
