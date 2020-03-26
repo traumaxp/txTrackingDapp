@@ -4,8 +4,14 @@
       <q-card-section>
         <div class="row">
           <div class="col text-center">
-            <p v-if="isInjected" id="has-metamask">
-              <i aria-hidden="true" class="fa fa-check"></i> Metamask installed
+            <p
+              v-if="isInjected"
+              id="has-metamask"
+            >
+              <i
+                aria-hidden="true"
+                class="fa fa-check"
+              ></i> Metamask installed
             </p>
             <div class="text-h6">Network: {{ network }}</div>
           </div>
@@ -22,17 +28,50 @@
       </q-card-section>
       <q-separator />
       <q-card-section>
-        <p v-if="balance !== 0" class="text-body1">Balance: {{ balance }} Ether</p>
-        <p v-if="daiBalance !== 0" class="text-body1">Balance: {{ daiBalance }} DAI</p>
-        <p v-if="manaBalance !== 0" class="text-body1">Balance: {{ manaBalance }} MANA</p>
-        <p v-if="tetherBalance !== 0" class="text-body1">Balance: {{ tetherBalance }} USDT</p>
-        <p v-if="usdcBalance !== 0" class="text-body1">Balance: {{ usdcBalance }} USDC</p>
-        <p v-if="paxosBalance !== 0" class="text-body1">Balance: {{ paxosBalance }} PAX</p>
-        <p v-if="makerBalance !== 0" class="text-body1">Balance: {{ makerBalance }} MKR</p>
-        <p v-if="batBalance !== 0" class="text-body1">Balance: {{ batBalance }} BAT</p>
-        <p v-if=" zrxBalance!== 0" class="text-body1">Balance: {{ zrxBalance }} ZRX</p>
-        <p v-if="saiBalance !== 0" class="text-body1">Balance: {{ saiBalance }} SAI</p>
-        <p v-if="kncBalance !== 0" class="text-body1">Balance: {{ kncBalance }} KNC</p>
+        <p
+          v-if="balance !== 0"
+          class="text-body1"
+        >Balance: {{ balance }} Ether</p>
+        <p
+          v-if="daiBalance !== 0"
+          class="text-body1"
+        >Balance: {{ daiBalance }} DAI</p>
+        <p
+          v-if="manaBalance !== 0"
+          class="text-body1"
+        >Balance: {{ manaBalance }} MANA</p>
+        <p
+          v-if="tetherBalance !== 0"
+          class="text-body1"
+        >Balance: {{ tetherBalance }} USDT</p>
+        <p
+          v-if="usdcBalance !== 0"
+          class="text-body1"
+        >Balance: {{ usdcBalance }} USDC</p>
+        <p
+          v-if="paxosBalance !== 0"
+          class="text-body1"
+        >Balance: {{ paxosBalance }} PAX</p>
+        <p
+          v-if="makerBalance !== 0"
+          class="text-body1"
+        >Balance: {{ makerBalance }} MKR</p>
+        <p
+          v-if="batBalance !== 0"
+          class="text-body1"
+        >Balance: {{ batBalance }} BAT</p>
+        <p
+          v-if=" zrxBalance!== 0"
+          class="text-body1"
+        >Balance: {{ zrxBalance }} ZRX</p>
+        <p
+          v-if="saiBalance !== 0"
+          class="text-body1"
+        >Balance: {{ saiBalance }} SAI</p>
+        <p
+          v-if="kncBalance !== 0"
+          class="text-body1"
+        >Balance: {{ kncBalance }} KNC</p>
       </q-card-section>
     </q-card>
   </div>
