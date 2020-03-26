@@ -7,13 +7,15 @@
       <div>
         <keyGeneration />
       </div>
-      <PinGenerator />
+      <PinGeneratorEng />
     </div>
+    <PinGeneratorFr />
     <!-- <txDecode/> -->
   </q-page>
 </template>
 <script>
-import PinGenerator from '../components/pinGenerator'
+import PinGeneratorEng from '../components/pinGeneratorEng'
+import PinGeneratorFr from '../components/pinGeneratorFr'
 // import txDecode from '../components/txDecode.vue'
 import hellometamask from '../components/hello-metamask'
 // import sendTx from '../components/sendTx'
@@ -28,7 +30,8 @@ export default {
   },
   components: {
     hellometamask,
-    PinGenerator,
+    PinGeneratorEng,
+    PinGeneratorFr,
     // txDecode,
     // sendTx,
     keyGeneration

@@ -5,11 +5,11 @@
       class="my-card"
     >
       <q-card-section>
-        <div class="text-h6">PIN GENERATOR</div>
+        <div class="text-h6">PIN GENERATOR ENGLISH WORDS</div>
       </q-card-section>
       <q-card-section>
         <div>
-          <q-btn @click="generatePin"></q-btn>
+          <q-btn @click="generatePinEng"></q-btn>
         </div>
         {{pin}}
       </q-card-section>
@@ -17,14 +17,16 @@
   </div>
 </template>
 <script>
+import randomWords from 'random-english-words'
 export default {
-  name: 'pinGenerator',
+  name: 'pinGeneratorEng',
   data: () => ({
     pin: ''
   }),
   methods: {
-    generatePin () {
-      this.pin = 'hello'
+    generatePinEng () {
+      let randomInt = Math.floor(Math.random() * (1000 - 100)) + 100
+      this.pin = randomWords({ minChars: 6 }) + randomInt
     }
   }
 }
