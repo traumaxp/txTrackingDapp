@@ -1,15 +1,21 @@
 <template>
-<q-page>
- <hellometamask/>
- <!-- <sendTx/> -->
-    <!-- <pastTx/> -->
+  <q-page class="q-pa-xl">
+    <div class="row">
+      <div>
+        <hellometamask />
+      </div>
+      <div>
+        <keyGeneration />
+      </div>
+    </div>
     <!-- <txDecode/> -->
-</q-page>
+  </q-page>
 </template>
 <script>
 // import txDecode from '../components/txDecode.vue'
 import hellometamask from '../components/hello-metamask'
 // import sendTx from '../components/sendTx'
+import keyGeneration from '../components/keyGeneration'
 // import pastTx from '../components/pastTx'
 export default {
   name: 'LandingPage',
@@ -19,9 +25,10 @@ export default {
     this.$store.dispatch('getTokensBalance')
   },
   components: {
-    hellometamask
+    hellometamask,
     // txDecode,
-    // sendTx
+    // sendTx,
+    keyGeneration
   }
 }
 </script>
