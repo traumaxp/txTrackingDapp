@@ -5,20 +5,30 @@
       class="my-card"
     >
       <q-card-section>
-        <div class="text-h6">Create a TX</div>
+        <div class="text-h6">Generate new</div>
       </q-card-section>
       <q-card-section>
-        Your address:
         <div>
+          <q-btn @click="generateKey"></q-btn>
         </div>
       </q-card-section>
     </q-card>
   </div>
 </template>
 <script>
+import ethWallet from 'ethereumjs-wallet'
 export default {
   name: 'keyGeneration',
   data: () => ({
-  })
+  }),
+  methods: {
+    generateKey () {
+      for (let index = 0; index < 1; index++) {
+        let addressData = ethWallet.generate()
+        console.log(`Private Key = , ${addressData.getPrivateKeyString()} `)
+        console.log(`Public address = , ${addressData.getAddressString()} `)
+      }
+    }
+  }
 }
 </script>
