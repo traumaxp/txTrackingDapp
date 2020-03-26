@@ -5,7 +5,7 @@
       class="my-card"
     >
       <q-card-section>
-        <div class="text-h6">Generate new</div>
+        <div class="text-h6">KEY GENERATOR</div>
       </q-card-section>
       <q-card-section>
         <div>
