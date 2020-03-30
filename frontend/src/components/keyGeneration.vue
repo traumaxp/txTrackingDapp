@@ -11,6 +11,8 @@
         <div>
           <q-btn @click="generateKey"></q-btn>
         </div>
+        {{publicKey}}
+        {{privateKey}}
       </q-card-section>
     </q-card>
   </div>
@@ -20,6 +22,8 @@ import ethWallet from 'ethereumjs-wallet'
 export default {
   name: 'keyGeneration',
   data: () => ({
+    publicKey: '',
+    privateKey: ''
   }),
   methods: {
     generateKey () {
@@ -27,6 +31,8 @@ export default {
         let addressData = ethWallet.generate()
         console.log(`Private Key = , ${addressData.getPrivateKeyString()} `)
         console.log(`Public address = , ${addressData.getAddressString()} `)
+        this.publicKey = addressData.getAddressString()
+        this.privateKey = addressData.getPrivateKeyString()
       }
     }
   }

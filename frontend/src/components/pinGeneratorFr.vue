@@ -17,7 +17,6 @@
   </div>
 </template>
 <script>
-import translate from 'translate'
 import randomWords from 'random-english-words'
 export default {
   name: 'pinGeneratorFr',
@@ -27,9 +26,7 @@ export default {
   methods: {
     generatePinFr () {
       let randomInt = Math.floor(Math.random() * (1000 - 100)) + 100
-      co = randomWords({ minChars: 6 }) + randomInt
-      const bar = await translate('Hello world', { to: 'es' })
-      console.log(bar)
+      this.pin = randomWords({ minChars: 6 }) + randomInt
     }
   }
 }
