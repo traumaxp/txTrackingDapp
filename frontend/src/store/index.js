@@ -12,6 +12,7 @@ import batBalance from '../util/batBalance'
 import zrxBalance from '../util/zrxBalance'
 import saiBalance from '../util/saiBalance'
 import kncBalance from '../util/kyberNetworkBalance'
+import sendEther from '../util/sendEther'
 
 import web3 from 'web3'
 import { FeathersVuex } from '../feathers-client'
@@ -110,6 +111,19 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    sendTx ({ commit }, data) {
+      console.log('sendTx Action beig executed')
+      console.log(data)
+      console.log(data.from)
+      let from = data.from
+      let to = data.to
+      let amount = data.amount
+      console.log(data.to)
+      console.log(data.amount)
+      sendEther(from, to, amount).then(result => {
+        console.log(result)
+      })
+    },
     registerWeb3 ({ commit }) {
       console.log('registerWeb3 Action being executed')
       getWeb3.then(result => {

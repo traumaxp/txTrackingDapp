@@ -1,11 +1,14 @@
 import Web3 from 'web3'
 
-let sendEther = function () {
+let sendEther = function (from, to, amount) {
+  console.log(from)
+  console.log(to)
+  console.log(amount)
   var web3 = new Web3(window.web3.currentProvider)
   web3.eth.sendTransaction({
-    from: '',
-    to: '',
-    value: 10017897970 // 10017897970
+    from: from,
+    to: to,
+    value: amount
   })
     .on('transactionHash', function (hash) {
       console.log('Transaction hash : ' + hash) // return Hash of tx

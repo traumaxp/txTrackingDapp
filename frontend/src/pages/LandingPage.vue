@@ -5,6 +5,9 @@
         <hellometamask />
       </div>
       <div>
+        <sendTx />
+      </div>
+      <div>
         <keyGeneration />
       </div>
       <PinGeneratorEng />
@@ -18,7 +21,7 @@ import PinGeneratorEng from '../components/pinGeneratorEng'
 import PinGeneratorFr from '../components/pinGeneratorFr'
 // import txDecode from '../components/txDecode.vue'
 import hellometamask from '../components/hello-metamask'
-// import sendTx from '../components/sendTx'
+import sendTx from '../components/sendTx'
 import keyGeneration from '../components/keyGeneration'
 // import pastTx from '../components/pastTx'
 export default {
@@ -33,7 +36,7 @@ export default {
     PinGeneratorEng,
     PinGeneratorFr,
     // txDecode,
-    // sendTx,
+    sendTx,
     keyGeneration
   }
 }

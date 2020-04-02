@@ -1,19 +1,40 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md flex flex-center">
-    <q-card style="min-width:400px" class="my-card">
+    <q-card
+      style="min-width:400px"
+      class="my-card"
+    >
       <q-card-section>
         <div class="text-h6">Create a TX</div>
       </q-card-section>
       <q-card-section>
         Your address:
         <div>
-          <q-form v-model="valid" @submit.prevent="sendAndSaveTx" class="q-gutter-md">
-            <q-input outlined v-model="account"></q-input>
-          Send Ether to
-          <q-input outlined v-model="recipientAddress"></q-input>
-          amount to send
-          <q-input outlined v-model="amount"></q-input>
-          <q-btn label="Submit" type="submit" :disabled="!valid" color="primary" />
+          <q-form
+            v-model="valid"
+            @submit.prevent="sendTx"
+            class="q-gutter-md"
+          >
+            <q-input
+              outlined
+              v-model="account"
+            ></q-input>
+            Send Ether to
+            <q-input
+              outlined
+              v-model="recipientAddress"
+            ></q-input>
+            amount to send
+            <q-input
+              outlined
+              v-model="amount"
+            ></q-input>
+            <q-btn
+              label="Submit"
+              type="submit"
+              :disabled="!valid"
+              color="primary"
+            />
           </q-form>
         </div>
       </q-card-section>
@@ -41,6 +62,14 @@ export default {
     }
   }),
   methods: {
+    sendTx () {
+      const data = {
+        from: this.account,
+        to: this.recipientAddress,
+        amount: this.amount
+      }
+      this.$store.dispatch('sendTx', data)
+    },
     sendAndSaveTx () {
       var txId
       var amount = this.amount
@@ -81,16 +110,16 @@ export default {
 </script>
 
 <style scoped>
-.q-card{
-  height: 400px
+.q-card {
+  height: 400px;
 }
 .metamask-info {
-  text-align: center
+  text-align: center;
 }
 #has-metamask {
-  color: green
+  color: green;
 }
 #no-metamask {
-  color: red
+  color: red;
 }
 </style>
